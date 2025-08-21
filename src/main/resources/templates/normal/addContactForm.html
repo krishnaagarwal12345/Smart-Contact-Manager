@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="eng"xmlns:th="http://www.thymeleaf.org" th:replace="userParent::layout1(~{::section})">
+<head>
+<meta charset="UTF-8">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    
+    
+<title>Insert title here</title>
+
+
+
+</head>
+<body>
+<section>
+
+
+<!-- we can use MS word in description only because of TinyMCE website we copy the script in this at the upper of the <.section> -->
+
+
+<div class="card " >
+<div class="card-body">
+<h1 id="heading "  class="text-center" style="text-align:center; margin-bottom:20px;" >ADD CONTACT</h1>
+<div th:if="${session.message}" id="mssg" >
+<!-- if type of message is success then it append the class(alert-success) then print the content of it same for type failure -->
+<div th:classappend="${'alert-' + session.message.type}" class="alert" role="alert">
+<span  th:text="${session.message.content}"> </span>
+
+</div>
+
+</div>
+
+
+<form action="#" th:action="@{/user/done}" method=post th:object="${contact}" enctype="multipart/form-data">
+<input required name="name" type="text" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Enter Contact Name" th:value="${contact.name}">
+<input required  name="email" type="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Enter email" th:value="${contact.email}">
+<input required name="phnno" type="number" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Phone Number.." th:value="${contact.phnno}">
+<input required name="nickname" type="text" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Enter nick name" th:value="${contact.nickname}">
+<textarea required name="description" class="form-control" id="textarea"rows="8" cols="" placeholder="Description......" th:text="${contact.description}"></textarea>
+<input  name="profileimage" type="file" class="form-control" id="file" aria-describedby="emailHelp"  >
+<div class="text-center" id="btns">
+  <button  style="color:red; background-color: aqua;"  id="sub" type="submit">submit</button>
+  <button style="color:white; background-color: black;" id="res" type="reset">reset</button>
+  </div>
+</form>
+
+
+
+
+</div>
+
+
+
+</div>
+
+<script src="https://cdn.tiny.cloud/1/hlwjvbf1yhy4bqon1hbg786jepfw1wopbgziqb9mke8h32js/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+
+</section>
+</body>
+</html>

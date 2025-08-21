@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="parent::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>SignUp page</title>
+</head>
+<body>
+
+<section class="banner">
+<div class="container" id="sign" >
+<h1 class="text-center">Register Here</h1>
+<form th:action="@{/register}" method="post" th:object="${user}">
+  <div class="form-group" >
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input name="name" type="text" class="form-control" th:classappend="${#fields.hasErrors('name')?'is-invalid':''}" id="name" aria-describedby="emailHelp" th:value="${user.name}"
+    >
+    
+  <div class="invalid-feedback" >please provide a name
+  </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input name="email" type="email" class="form-control" id="Email1" aria-describedby="emailHelp" th:value="${user.email}">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="form-label">password</label>
+    <input name="password" type="password" class="form-control" id="pass" aria-describedby="emailHelp" >
+    
+  </div>
+  <div class="form-group">
+  <textarea name="about" class="form-control"  id="about" rows="10" th:value="${user.about}">write something yourself</textarea>
+  </div>
+  
+  <div class="form-group">
+  <input name="aggrement" type="checkbox" id="check">
+  <label for="agreement" style="color:red;">Accept terms and conditions</label>
+  </div>
+  
+  <div class="text-center" id="btns">
+  <button  style="color:red; background-color: aqua;"  id="sub" type="submit">submit</button>
+  <button style="color:white; background-color: black;" id="res" type="reset">reset</button>
+  </div>
+  </form>
+</div>
+
+</section>    
+
+</body>
+</html>

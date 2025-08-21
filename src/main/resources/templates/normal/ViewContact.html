@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="eng"xmlns:th="http://www.thymeleaf.org" th:replace="userParent::layout1(~{::section})">
+<head>
+<meta charset="UTF-8">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    
+    
+<title>Insert title here</title>
+
+
+
+</head>
+<body>
+
+<!--END navBar  -->
+<!--Side bar  -->
+
+
+<section>
+<div class="card">
+<div class="card-body">
+<h1 class="text-center">User Contact</h1>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone no</th>
+     
+    </tr>
+  </thead>
+  <tbody class="table-group-divider ">
+    <tr th:each="c : ${contacts}">
+      <th scope="row">1</th>
+      
+    
+      
+      <td>
+       <img class="profile_image"alt="" src="" th:src="@{'/image/'+${c.image}}">
+       <span th:text="${c.name}"></span>
+      </td>
+      <td >
+      <a href= "#" th:href="@{'/user/contact/'+${c.cId}}"><span th:text="${c.email}"></span></a>
+      
+      </td>
+      <td th:text="${c.phnno}"></td>
+      
+      
+    </tr>
+    
+  </tbody>
+</table>
+<!-- pagination -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li th:if="${currentpage != 0}" class="page-item"><a class="page-link" href="#" th:href="@{'/user/showcontact/'+${currentpage-1}}">Previous</a></li>
+    
+    <li th:classappend="${currentpage==i-1?'active':''}" th:each=" i : ${#numbers.sequence(1,totalpages)}" class="page-item" ><a class="page-link" href="#" th:href="@{'/user/showcontact/'+${i-1}}"><span th:text="${i}"></span></a></li>
+    
+  
+    <li th:if="${currentpage+1 != totalpages || totalpages==1}" class="page-item"><a class="page-link" href="#" th:href="@{'/user/showcontact/'+${currentpage+1}}">Next</a></li>
+  </ul>
+</nav>
+</div>
+
+</div>
+</section>
+
+
+
+
+</body>
+</html>
