@@ -5,6 +5,8 @@ package com.SmartContactManager.entities;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,6 +31,7 @@ public class Contact {
 	private String image;
 
 	@ManyToOne
+	@JsonIgnore
 	private User user;
 
 	// Getters and Setters
