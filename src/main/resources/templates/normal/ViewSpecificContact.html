@@ -1,38 +1,11 @@
 <!DOCTYPE html>
-<html lang="eng"xmlns:th="http://www.thymeleaf.org" th:replace="userParent::layout1">
+<html lang="eng"xmlns:th="http://www.thymeleaf.org" th:replace="userParent::layout1(~{::section})">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<section>
-<!--END navBar  -->
-<!--Side bar  -->
-<div class="sidebar">
-<!-- //session alert message -->
 
-<button onclick="BarVisibility()" type="button" class="btn-close" ></button>
-<div class="divider"></div>
-<a class="item" href="#" th:href="@{/home}"><i class="fas fa-home"></i>Home</a>
-<a class="item" href="#" th:href="@{/user/showcontact/0}"><i class="fas fa-id-card-alt"></i>View Contact</a>
-<a class="item" href="#" th:href="@{/user/addcontact}"><i class="fas fa-pencil-alt"></i>Add Contact</a>
-<a class="item" ><i class="fas fa-user-circle"></i>MyProfile</a>
-<a class="item" ><i class="fas fa-cogs"></i>Settings</a>
-<a class="item" href="#" th:href="@{/logout}" ><i class="fas fa-sign-out-alt"></i>LogOut</a>
-<div class="divider"></div>
-
-
-
-</div>
-<div class="content">
-
-
-<h1 id="content"><i onclick="BarVisibility()" class="fas fa-bars m-3" ></i></h1>
-</div>
-
-
-
-</section>
 <section>
 <div class="card">
 
@@ -42,7 +15,9 @@
 
 <h1>Contact Details</h1>
 
-<img style="height: 3.5cm; margin-top: 40px;" alt="" src="" th:src="@{'/image/'+${c.image}}">
+<div class=" text-center">
+<img style="height: 200px; width: 200px; margin-top: 5px;" alt="" src="" th:src="@{'/image/'+${c.image}}">
+</div>
 
 <table class="table table-dark table-striped table-hover table-bordered border-primary">
   <thead>

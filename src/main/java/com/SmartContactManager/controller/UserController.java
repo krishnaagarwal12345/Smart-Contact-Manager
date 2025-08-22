@@ -93,6 +93,7 @@ public class UserController {
 					
 					System.out.println("Empty");
 					contact.setImage("default.png");
+					user.setImage("default.png");
 				}
 			
 			else{
@@ -158,9 +159,14 @@ public class UserController {
 	//contact profile handler
 	
 	@GetMapping("/profile")
-	public String profilepage(Model m) {
-		return "ContactProfile";
+	public String profilepage(Model m,Principal p) {
+		String name=p.getName();
+		User u=this.repo.findByEmail(name);
+		m.addAttribute("u",u);
+		return "normal/ContactProfile";
 	}
+    
+	
 	
 	
 
